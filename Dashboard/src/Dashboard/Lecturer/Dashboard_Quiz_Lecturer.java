@@ -32,7 +32,6 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
         headerPanel = new javax.swing.JPanel();
         Edit = new java.awt.Button();
         roleDosen = new javax.swing.JLabel();
@@ -42,24 +41,27 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         LogOutButton = new java.awt.Button();
         labelQuizDosen = new javax.swing.JLabel();
         quiz1 = new javax.swing.JPanel();
-        judulQuiz1 = new javax.swing.JTextField();
         editQuiz1 = new javax.swing.JButton();
-        quiz2 = new javax.swing.JPanel();
-        judulQuiz2 = new javax.swing.JTextField();
-        editQuiz2 = new javax.swing.JButton();
-        quiz3 = new javax.swing.JPanel();
-        judulQuiz3 = new javax.swing.JTextField();
-        editQuiz3 = new javax.swing.JButton();
+        judulQuiz1 = new javax.swing.JLabel();
+        QuizIcon2 = new javax.swing.JLabel();
         nilaiMahasiswaHeader = new javax.swing.JLabel();
         NilaiMahasiswa1 = new javax.swing.JPanel();
-        judulNilaiQuiz1 = new javax.swing.JTextField();
         lihatNilai1 = new javax.swing.JButton();
+        labelNilaiQuiz1 = new javax.swing.JLabel();
         NilaiMahasiswa2 = new javax.swing.JPanel();
-        judulNilaiQuiz2 = new javax.swing.JTextField();
         lihatNilai2 = new javax.swing.JButton();
+        labelNilaiQuiz2 = new javax.swing.JLabel();
         NilaiMahasiswa3 = new javax.swing.JPanel();
-        judulNilaiQuiz3 = new javax.swing.JTextField();
         lihatNilai3 = new javax.swing.JButton();
+        labelNilaiQuiz3 = new javax.swing.JLabel();
+        quiz2 = new javax.swing.JPanel();
+        editQuiz4 = new javax.swing.JButton();
+        judulQuiz2 = new javax.swing.JLabel();
+        QuizIcon1 = new javax.swing.JLabel();
+        quiz3 = new javax.swing.JPanel();
+        editQuiz5 = new javax.swing.JButton();
+        judulQuiz3 = new javax.swing.JLabel();
+        QuizIcon = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -75,9 +77,8 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jInternalFrame2.setPreferredSize(new java.awt.Dimension(1280, 720));
-        jInternalFrame2.setVisible(true);
+        setBackground(new java.awt.Color(204, 204, 204));
+        setMinimumSize(new java.awt.Dimension(828, 612));
 
         headerPanel.setBackground(new java.awt.Color(0, 0, 153));
 
@@ -159,236 +160,252 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         labelQuizDosen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelQuizDosen.setText("Quiz Saat Ini");
 
-        quiz1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+        quiz1.setBackground(new java.awt.Color(255, 255, 255));
+
+        editQuiz1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        editQuiz1.setText("Edit");
 
         judulQuiz1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulQuiz1.setText("judulQuiz");
+        judulQuiz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judulQuiz1.setText("judulQuiz1");
 
-        editQuiz1.setText("Edit");
+        QuizIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
 
         javax.swing.GroupLayout quiz1Layout = new javax.swing.GroupLayout(quiz1);
         quiz1.setLayout(quiz1Layout);
         quiz1Layout.setHorizontalGroup(
             quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulQuiz1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(judulQuiz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(editQuiz1)
-                .addGap(59, 59, 59))
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
+                        .addComponent(editQuiz1)
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
+                        .addComponent(QuizIcon2)
+                        .addGap(25, 25, 25))))
         );
         quiz1Layout.setVerticalGroup(
             quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(judulQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(QuizIcon2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(judulQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editQuiz1)
-                .addGap(9, 9, 9))
-        );
-
-        quiz2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
-
-        judulQuiz2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulQuiz2.setText("judulQuiz");
-
-        editQuiz2.setText("Edit");
-
-        javax.swing.GroupLayout quiz2Layout = new javax.swing.GroupLayout(quiz2);
-        quiz2.setLayout(quiz2Layout);
-        quiz2Layout.setHorizontalGroup(
-            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulQuiz2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(editQuiz2)
-                .addGap(59, 59, 59))
-        );
-        quiz2Layout.setVerticalGroup(
-            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(judulQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editQuiz2)
-                .addGap(9, 9, 9))
-        );
-
-        quiz3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
-
-        judulQuiz3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulQuiz3.setText("judulQuiz");
-
-        editQuiz3.setText("Edit");
-
-        javax.swing.GroupLayout quiz3Layout = new javax.swing.GroupLayout(quiz3);
-        quiz3.setLayout(quiz3Layout);
-        quiz3Layout.setHorizontalGroup(
-            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulQuiz3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(editQuiz3)
-                .addGap(59, 59, 59))
-        );
-        quiz3Layout.setVerticalGroup(
-            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addComponent(judulQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editQuiz3)
                 .addGap(9, 9, 9))
         );
 
         nilaiMahasiswaHeader.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nilaiMahasiswaHeader.setText("Nilai Mahasiswa");
 
-        NilaiMahasiswa1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+        NilaiMahasiswa1.setBackground(new java.awt.Color(255, 255, 255));
 
-        judulNilaiQuiz1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulNilaiQuiz1.setText("judulQuiz");
-
+        lihatNilai1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lihatNilai1.setText("Lihat Nilai");
+
+        labelNilaiQuiz1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        labelNilaiQuiz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNilaiQuiz1.setText("judulQuiz1");
 
         javax.swing.GroupLayout NilaiMahasiswa1Layout = new javax.swing.GroupLayout(NilaiMahasiswa1);
         NilaiMahasiswa1.setLayout(NilaiMahasiswa1Layout);
         NilaiMahasiswa1Layout.setHorizontalGroup(
             NilaiMahasiswa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulNilaiQuiz1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(NilaiMahasiswa1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NilaiMahasiswa1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lihatNilai1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(labelNilaiQuiz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         NilaiMahasiswa1Layout.setVerticalGroup(
             NilaiMahasiswa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NilaiMahasiswa1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(judulNilaiQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNilaiQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(lihatNilai1)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        NilaiMahasiswa2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+        NilaiMahasiswa2.setBackground(new java.awt.Color(255, 255, 255));
 
-        judulNilaiQuiz2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulNilaiQuiz2.setText("judulQuiz");
-
+        lihatNilai2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lihatNilai2.setText("Lihat Nilai");
+
+        labelNilaiQuiz2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        labelNilaiQuiz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNilaiQuiz2.setText("judulQuiz2");
 
         javax.swing.GroupLayout NilaiMahasiswa2Layout = new javax.swing.GroupLayout(NilaiMahasiswa2);
         NilaiMahasiswa2.setLayout(NilaiMahasiswa2Layout);
         NilaiMahasiswa2Layout.setHorizontalGroup(
             NilaiMahasiswa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulNilaiQuiz2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(NilaiMahasiswa2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lihatNilai2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(labelNilaiQuiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         NilaiMahasiswa2Layout.setVerticalGroup(
             NilaiMahasiswa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NilaiMahasiswa2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(judulNilaiQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNilaiQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(lihatNilai2)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        NilaiMahasiswa3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+        NilaiMahasiswa3.setBackground(new java.awt.Color(255, 255, 255));
 
-        judulNilaiQuiz3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        judulNilaiQuiz3.setText("judulQuiz");
-
+        lihatNilai3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lihatNilai3.setText("Lihat Nilai");
+
+        labelNilaiQuiz3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        labelNilaiQuiz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNilaiQuiz3.setText("judulQuiz3");
 
         javax.swing.GroupLayout NilaiMahasiswa3Layout = new javax.swing.GroupLayout(NilaiMahasiswa3);
         NilaiMahasiswa3.setLayout(NilaiMahasiswa3Layout);
         NilaiMahasiswa3Layout.setHorizontalGroup(
             NilaiMahasiswa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judulNilaiQuiz3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(NilaiMahasiswa3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lihatNilai3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(labelNilaiQuiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         NilaiMahasiswa3Layout.setVerticalGroup(
             NilaiMahasiswa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NilaiMahasiswa3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(judulNilaiQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNilaiQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(lihatNilai3)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nilaiMahasiswaHeader)
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelQuizDosen)
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 24, Short.MAX_VALUE))))
-            .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        quiz2.setBackground(new java.awt.Color(255, 255, 255));
+
+        editQuiz4.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        editQuiz4.setText("Edit");
+
+        judulQuiz2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        judulQuiz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judulQuiz2.setText("judulQuiz2");
+
+        QuizIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
+
+        javax.swing.GroupLayout quiz2Layout = new javax.swing.GroupLayout(quiz2);
+        quiz2.setLayout(quiz2Layout);
+        quiz2Layout.setHorizontalGroup(
+            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addComponent(editQuiz4)
+                .addGap(59, 59, 59))
+            .addComponent(judulQuiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(quiz2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(QuizIcon1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(labelQuizDosen)
+        quiz2Layout.setVerticalGroup(
+            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(QuizIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(quiz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(nilaiMahasiswaHeader)
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 59, Short.MAX_VALUE))
+                .addComponent(judulQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editQuiz4)
+                .addGap(9, 9, 9))
+        );
+
+        quiz3.setBackground(new java.awt.Color(255, 255, 255));
+
+        editQuiz5.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        editQuiz5.setText("Edit");
+
+        judulQuiz3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        judulQuiz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judulQuiz3.setText("judulQuiz3");
+
+        QuizIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
+
+        javax.swing.GroupLayout quiz3Layout = new javax.swing.GroupLayout(quiz3);
+        quiz3.setLayout(quiz3Layout);
+        quiz3Layout.setHorizontalGroup(
+            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(judulQuiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
+                        .addComponent(editQuiz5)
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
+                        .addComponent(QuizIcon)
+                        .addGap(26, 26, 26))))
+        );
+        quiz3Layout.setVerticalGroup(
+            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(QuizIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(judulQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editQuiz5)
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nilaiMahasiswaHeader)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelQuizDosen)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelQuizDosen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(nilaiMahasiswaHeader)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -449,19 +466,21 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private javax.swing.JPanel NilaiMahasiswa1;
     private javax.swing.JPanel NilaiMahasiswa2;
     private javax.swing.JPanel NilaiMahasiswa3;
+    private javax.swing.JLabel QuizIcon;
+    private javax.swing.JLabel QuizIcon1;
+    private javax.swing.JLabel QuizIcon2;
     private javax.swing.JLabel WelcomeText;
     private javax.swing.JButton editQuiz1;
-    private javax.swing.JButton editQuiz2;
-    private javax.swing.JButton editQuiz3;
+    private javax.swing.JButton editQuiz4;
+    private javax.swing.JButton editQuiz5;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JTextField judulNilaiQuiz1;
-    private javax.swing.JTextField judulNilaiQuiz2;
-    private javax.swing.JTextField judulNilaiQuiz3;
-    private javax.swing.JTextField judulQuiz1;
-    private javax.swing.JTextField judulQuiz2;
-    private javax.swing.JTextField judulQuiz3;
+    private javax.swing.JLabel judulQuiz1;
+    private javax.swing.JLabel judulQuiz2;
+    private javax.swing.JLabel judulQuiz3;
+    private javax.swing.JLabel labelNilaiQuiz1;
+    private javax.swing.JLabel labelNilaiQuiz2;
+    private javax.swing.JLabel labelNilaiQuiz3;
     private javax.swing.JLabel labelQuizDosen;
     private javax.swing.JButton lihatNilai1;
     private javax.swing.JButton lihatNilai2;
