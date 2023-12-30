@@ -28,13 +28,23 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        profileName = new javax.swing.JTextField();
-        profileNIM = new javax.swing.JTextField();
-        roleName = new javax.swing.JTextField();
+        labelQuizMahasiswa = new javax.swing.JLabel();
+        quiz1 = new javax.swing.JPanel();
+        judulQuiz1 = new javax.swing.JTextField();
+        editQuiz1 = new javax.swing.JButton();
+        quiz2 = new javax.swing.JPanel();
+        judulQuiz2 = new javax.swing.JTextField();
+        editQuiz2 = new javax.swing.JButton();
+        quiz3 = new javax.swing.JPanel();
+        judulQuiz3 = new javax.swing.JTextField();
+        editQuiz3 = new javax.swing.JButton();
+        headerPanel = new javax.swing.JPanel();
         Edit = new java.awt.Button();
-        quiz = new javax.swing.JPanel();
+        roleMahasiswa = new javax.swing.JLabel();
+        nimMahasiswa = new javax.swing.JLabel();
+        namaMahasiswa = new javax.swing.JLabel();
+        WelcomeText = new javax.swing.JLabel();
+        LogOutButton = new java.awt.Button();
 
         jInternalFrame1.setVisible(true);
 
@@ -50,30 +60,97 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(845, 494));
 
-        jInternalFrame2.setPreferredSize(new java.awt.Dimension(1280, 720));
-        jInternalFrame2.setVisible(true);
+        labelQuizMahasiswa.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelQuizMahasiswa.setText("Quiz Saat Ini");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Welcome");
+        quiz1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
 
-        profileName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        profileName.setText("name_field");
+        judulQuiz1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        judulQuiz1.setText("judulQuiz");
 
-        profileNIM.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        profileNIM.setText("nim_field");
+        editQuiz1.setText("Mulai Quiz");
 
-        roleName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        roleName.setText("role_field");
-        roleName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roleNameActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout quiz1Layout = new javax.swing.GroupLayout(quiz1);
+        quiz1.setLayout(quiz1Layout);
+        quiz1Layout.setHorizontalGroup(
+            quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(judulQuiz1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(quiz1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(editQuiz1)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        quiz1Layout.setVerticalGroup(
+            quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
+                .addContainerGap(190, Short.MAX_VALUE)
+                .addComponent(judulQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editQuiz1)
+                .addGap(9, 9, 9))
+        );
 
-        Edit.setBackground(new java.awt.Color(51, 51, 255));
-        Edit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        Edit.setForeground(new java.awt.Color(255, 255, 255));
+        quiz2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+
+        judulQuiz2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        judulQuiz2.setText("judulQuiz");
+
+        editQuiz2.setText("Mulai Quiz");
+
+        javax.swing.GroupLayout quiz2Layout = new javax.swing.GroupLayout(quiz2);
+        quiz2.setLayout(quiz2Layout);
+        quiz2Layout.setHorizontalGroup(
+            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(judulQuiz2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(quiz2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(editQuiz2)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        quiz2Layout.setVerticalGroup(
+            quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(judulQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editQuiz2)
+                .addGap(9, 9, 9))
+        );
+
+        quiz3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+
+        judulQuiz3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        judulQuiz3.setText("judulQuiz");
+
+        editQuiz3.setText("Mulai Quiz");
+
+        javax.swing.GroupLayout quiz3Layout = new javax.swing.GroupLayout(quiz3);
+        quiz3.setLayout(quiz3Layout);
+        quiz3Layout.setHorizontalGroup(
+            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(judulQuiz3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(quiz3Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(editQuiz3)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        quiz3Layout.setVerticalGroup(
+            quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(judulQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editQuiz3)
+                .addGap(9, 9, 9))
+        );
+
+        headerPanel.setBackground(new java.awt.Color(0, 0, 153));
+
+        Edit.setBackground(new java.awt.Color(204, 204, 204));
+        Edit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Edit.setForeground(new java.awt.Color(0, 0, 153));
         Edit.setLabel("Edit Profile\n");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,84 +158,116 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
             }
         });
 
-        quiz.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 102, 255), 2, true));
+        roleMahasiswa.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        roleMahasiswa.setForeground(new java.awt.Color(255, 255, 255));
+        roleMahasiswa.setText("Mahasiswa");
 
-        javax.swing.GroupLayout quizLayout = new javax.swing.GroupLayout(quiz);
-        quiz.setLayout(quizLayout);
-        quizLayout.setHorizontalGroup(
-            quizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1184, Short.MAX_VALUE)
-        );
-        quizLayout.setVerticalGroup(
-            quizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
-        );
+        nimMahasiswa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        nimMahasiswa.setForeground(new java.awt.Color(255, 255, 255));
+        nimMahasiswa.setText("nimMahasiswa");
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addComponent(quiz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        namaMahasiswa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        namaMahasiswa.setForeground(new java.awt.Color(255, 255, 255));
+        namaMahasiswa.setText("namaMahasiswa");
+
+        WelcomeText.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        WelcomeText.setForeground(new java.awt.Color(255, 255, 255));
+        WelcomeText.setText("Selamat Datang Kembali,");
+
+        LogOutButton.setBackground(new java.awt.Color(255, 0, 0));
+        LogOutButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        LogOutButton.setForeground(new java.awt.Color(255, 255, 255));
+        LogOutButton.setLabel("LogOut");
+        LogOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namaMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roleMahasiswa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nimMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(roleName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(profileName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(profileNIM, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(WelcomeText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))))
+                        .addComponent(LogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(profileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(profileNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(roleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(101, 101, 101)
-                .addComponent(quiz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(WelcomeText)
+                    .addComponent(LogOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namaMahasiswa)
+                    .addComponent(nimMahasiswa))
+                .addGap(16, 16, 16)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roleMahasiswa)
+                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelQuizMahasiswa))
+                .addContainerGap(200, Short.MAX_VALUE))
+            .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelQuizMahasiswa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(quiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogOutButtonActionPerformed
+
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
+        Profile_Mahasiswa pm = new Profile_Mahasiswa();
+        pm.show();
+        dispose();
     }//GEN-LAST:event_EditActionPerformed
-
-    private void roleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roleNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,12 +307,22 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Edit;
+    private java.awt.Button LogOutButton;
+    private javax.swing.JLabel WelcomeText;
+    private javax.swing.JButton editQuiz1;
+    private javax.swing.JButton editQuiz2;
+    private javax.swing.JButton editQuiz3;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField profileNIM;
-    private javax.swing.JTextField profileName;
-    private javax.swing.JPanel quiz;
-    private javax.swing.JTextField roleName;
+    private javax.swing.JTextField judulQuiz1;
+    private javax.swing.JTextField judulQuiz2;
+    private javax.swing.JTextField judulQuiz3;
+    private javax.swing.JLabel labelQuizMahasiswa;
+    private javax.swing.JLabel namaMahasiswa;
+    private javax.swing.JLabel nimMahasiswa;
+    private javax.swing.JPanel quiz1;
+    private javax.swing.JPanel quiz2;
+    private javax.swing.JPanel quiz3;
+    private javax.swing.JLabel roleMahasiswa;
     // End of variables declaration//GEN-END:variables
 }
