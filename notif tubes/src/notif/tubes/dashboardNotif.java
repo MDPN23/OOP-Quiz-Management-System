@@ -40,13 +40,17 @@ public class dashboardNotif extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         jDialog1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jDialog1.setMaximumSize(new java.awt.Dimension(540, 239));
-        jDialog1.setMinimumSize(new java.awt.Dimension(540, 239));
+        jDialog1.setIconImage(null);
+        jDialog1.setIconImages(null);
+        jDialog1.setMaximumSize(new java.awt.Dimension(447, 221));
+        jDialog1.setMinimumSize(new java.awt.Dimension(447, 221));
+        jDialog1.setModal(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(447, 221));
         jDialog1.setSize(new java.awt.Dimension(0, 0));
 
         PanelDialog.setBorder(new javax.swing.border.MatteBorder(null));
         PanelDialog.setToolTipText("");
-        PanelDialog.setMinimumSize(new java.awt.Dimension(540, 239));
+        PanelDialog.setMinimumSize(new java.awt.Dimension(158, 221));
 
         BackButton.setText("back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +63,7 @@ public class dashboardNotif extends javax.swing.JFrame {
         panelBiru.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 153), new java.awt.Color(0, 0, 0), null));
 
         DeadlineQuiz.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        DeadlineQuiz.setForeground(new java.awt.Color(255, 255, 255));
         DeadlineQuiz.setText("Deadline Quiz");
 
         javax.swing.GroupLayout panelBiruLayout = new javax.swing.GroupLayout(panelBiru);
@@ -90,32 +95,33 @@ public class dashboardNotif extends javax.swing.JFrame {
         PanelDialogLayout.setHorizontalGroup(
             PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBiru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PanelDialogLayout.createSequentialGroup()
-                .addGroup(PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDialogLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(PanelDialogLayout.createSequentialGroup()
-                        .addGap(388, 388, 388)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
+                        .addGap(0, 289, Short.MAX_VALUE)
                         .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelDialogLayout.setVerticalGroup(
             PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
                 .addComponent(panelBiru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BackButton)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelDialog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(PanelDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +154,7 @@ public class dashboardNotif extends javax.swing.JFrame {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,21 +187,30 @@ public class dashboardNotif extends javax.swing.JFrame {
         // Buat koneksi ke database
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
         // Buat statement untuk mengambil data quiz
-        String sql = "SELECT nama_quiz FROM quiz";
+        String sql = "SELECT nama_quiz, mata_kuliah, deadline FROM quiz";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
         // Buat DefaultListModel untuk menyimpan data quiz
         DefaultListModel<String> listModel = new DefaultListModel<>();
+//        DefaultListModel<String> listMode2 = new DefaultListModel<>();
+//        DefaultListModel<String> listMode3 = new DefaultListModel<>();
 
         // Iterasi hasil query dan tambahkan ke listModel
         while (rs.next()) {
             String quizName = rs.getString("nama_quiz");
-            listModel.addElement(quizName);
+            String matakuliah = rs.getString("mata_kuliah");
+            String dl = rs.getString("deadline");
+            String hasil = quizName + "  " + matakuliah + "        " + dl;
+            listModel.addElement(hasil);
+//            listMode2.addElement(matakuliah);
+//            listMode3.addElement(dl);
         }
 
         // Set model untuk jList1
         jList1.setModel(listModel);
+//        jList2.setModel(listMode2);
+//        jList3.setModel(listMode3);
         
     } catch (SQLException e) {
         // Tampilkan pesan error jika terjadi kesalahan koneksi database
