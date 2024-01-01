@@ -29,6 +29,8 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
     
     public Profile_Mahasiswa() {
         initComponents();
+        String username = "gegeganteng";
+        fetchDataFromDatabase(username);
     }
 
     /**
@@ -273,6 +275,41 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
 
     private void yaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yaButtonActionPerformed
         // TODO add your handling code here:
+        try {
+
+            String updatedName = namaMahasiswa.getText();
+            String updatedEmail = emailMahasiswa.getText();
+            String updatedBirthDate = tanggalLahirMahasiswa.getText();
+            String updatedGender = genderMahasiswa.getText();
+            String updatedPhoneNumber = telefonMahasiswa.getText();
+
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            String updateQuery = "UPDATE `data-mahasiswa` SET nama=?, email=?, `tanggal-lahir`=?, gender=?, telefon=? WHERE username=?";
+            try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                updateStatement.setString(1, updatedName);
+                updateStatement.setString(2, updatedEmail);
+                updateStatement.setString(3, updatedBirthDate);
+                updateStatement.setString(4, updatedGender);
+                updateStatement.setString(5, updatedPhoneNumber);
+                String username = "gegeganteng";
+                updateStatement.setString(6, username);
+
+                int rowsUpdated = updateStatement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil diperbarui");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "data gagal diperbarui");
+                    ubahDataDialog.setVisible(false);
+                }
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Dashboard_Quiz_Student dqs = new Dashboard_Quiz_Student();
         dqs.show();
         dispose();
@@ -307,15 +344,15 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telefonMahasiswaActionPerformed
 
-    private void fetchDataFromDatabase(int nim) {
+    private void fetchDataFromDatabase(String username) {
         try {
             // Establish the database connection
             Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
             // Prepare the SQL query
-            String query = "SELECT * FROM data-mahasiswa WHERE nim = ?";
+            String query = "SELECT * FROM `data-mahasiswa` WHERE username = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setInt(1, nim);
+                preparedStatement.setString(1, username);
 
                 // Execute the query
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dashboard.Lecturer;
+package pkgfinal.merge.Dashboard.Lecturer;
 
-import Dashboard.Student.*;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -528,6 +527,10 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Dashboard_Quiz_Lecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
