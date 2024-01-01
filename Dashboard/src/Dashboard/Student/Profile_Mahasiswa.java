@@ -5,6 +5,13 @@
  */
 package Dashboard.Student;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lenovo
@@ -14,8 +21,16 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form Profile_Mahasiswa
      */
+    
+    // Define your database connection parameters
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
+    
     public Profile_Mahasiswa() {
         initComponents();
+        String username = "gegeganteng";
+        fetchDataFromDatabase(username);
     }
 
     /**
@@ -32,8 +47,8 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         yaButton = new javax.swing.JButton();
         ubahDataLabel = new javax.swing.JLabel();
         headerPanel = new javax.swing.JPanel();
-        Edit = new java.awt.Button();
         WelcomeText = new javax.swing.JLabel();
+        Edit = new java.awt.Button();
         namaLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         namaMahasiswa = new javax.swing.JTextField();
@@ -101,6 +116,10 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
 
         headerPanel.setBackground(new java.awt.Color(0, 0, 153));
 
+        WelcomeText.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        WelcomeText.setForeground(new java.awt.Color(255, 255, 255));
+        WelcomeText.setText("Profil Mahasiswa");
+
         Edit.setBackground(new java.awt.Color(204, 204, 204));
         Edit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Edit.setForeground(new java.awt.Color(0, 0, 153));
@@ -111,10 +130,6 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
             }
         });
 
-        WelcomeText.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        WelcomeText.setForeground(new java.awt.Color(255, 255, 255));
-        WelcomeText.setText("Profil");
-
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
@@ -124,15 +139,15 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
                 .addComponent(WelcomeText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WelcomeText)
-                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WelcomeText))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -143,8 +158,18 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         emailLabel.setText("Email");
 
         namaMahasiswa.setText("namaMahasiswa");
+        namaMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaMahasiswaActionPerformed(evt);
+            }
+        });
 
         emailMahasiswa.setText("emailMahasiswa");
+        emailMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailMahasiswaActionPerformed(evt);
+            }
+        });
 
         emailLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel1.setText("Alamat");
@@ -160,13 +185,28 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         emailLabel2.setText("Tanggal Lahir");
 
         tanggalLahirMahasiswa.setText("tanggalLahirMahasiswa");
+        tanggalLahirMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanggalLahirMahasiswaActionPerformed(evt);
+            }
+        });
 
         emailLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel3.setText("Gender");
 
         genderMahasiswa.setText("genderMahasiswa");
+        genderMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderMahasiswaActionPerformed(evt);
+            }
+        });
 
         telefonMahasiswa.setText("telefonMahasiswa");
+        telefonMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonMahasiswaActionPerformed(evt);
+            }
+        });
 
         emailLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel4.setText("Telefon");
@@ -229,17 +269,47 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        // TODO add your handling code here:
-        ubahDataDialog.setVisible(true);
-    }//GEN-LAST:event_EditActionPerformed
-
     private void alamatMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatMahasiswaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_alamatMahasiswaActionPerformed
 
     private void yaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yaButtonActionPerformed
         // TODO add your handling code here:
+        try {
+
+            String updatedName = namaMahasiswa.getText();
+            String updatedEmail = emailMahasiswa.getText();
+            String updatedBirthDate = tanggalLahirMahasiswa.getText();
+            String updatedGender = genderMahasiswa.getText();
+            String updatedPhoneNumber = telefonMahasiswa.getText();
+
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            String updateQuery = "UPDATE `data-mahasiswa` SET nama=?, email=?, `tanggal-lahir`=?, gender=?, telefon=? WHERE username=?";
+            try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                updateStatement.setString(1, updatedName);
+                updateStatement.setString(2, updatedEmail);
+                updateStatement.setString(3, updatedBirthDate);
+                updateStatement.setString(4, updatedGender);
+                updateStatement.setString(5, updatedPhoneNumber);
+                String username = "gegeganteng";
+                updateStatement.setString(6, username);
+
+                int rowsUpdated = updateStatement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil diperbarui");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "data gagal diperbarui");
+                    ubahDataDialog.setVisible(false);
+                }
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Dashboard_Quiz_Student dqs = new Dashboard_Quiz_Student();
         dqs.show();
         dispose();
@@ -249,6 +319,69 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
         ubahDataDialog.setVisible(false);
     }//GEN-LAST:event_tidakButtonActionPerformed
 
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        // TODO add your handling code here:
+        ubahDataDialog.setVisible(true);
+    }//GEN-LAST:event_EditActionPerformed
+
+    private void namaMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaMahasiswaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaMahasiswaActionPerformed
+
+    private void emailMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailMahasiswaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailMahasiswaActionPerformed
+
+    private void tanggalLahirMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalLahirMahasiswaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanggalLahirMahasiswaActionPerformed
+
+    private void genderMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderMahasiswaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderMahasiswaActionPerformed
+
+    private void telefonMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonMahasiswaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonMahasiswaActionPerformed
+
+    private void fetchDataFromDatabase(String username) {
+        try {
+            // Establish the database connection
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Prepare the SQL query
+            String query = "SELECT * FROM `data-mahasiswa` WHERE username = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, username);
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Retrieve data from the result set and populate your GUI components
+                        String studentName = resultSet.getString("nama");
+                        String email = resultSet.getString("email");
+                        String birthDate = resultSet.getString("tanggal-lahir");
+                        String gender = resultSet.getString("gender");
+                        String phoneNumber = resultSet.getString("telefon");
+
+                        // Populate the GUI components
+                        namaMahasiswa.setText(studentName);
+                        emailMahasiswa.setText(email);
+                        tanggalLahirMahasiswa.setText(birthDate);
+                        genderMahasiswa.setText(gender);
+                        telefonMahasiswa.setText(phoneNumber);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "tidak ada data tersedia");
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

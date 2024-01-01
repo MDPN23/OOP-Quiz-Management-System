@@ -6,6 +6,12 @@
 package Dashboard.Admin;
 
 import Dashboard.Student.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +22,13 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard_Quiz
      */
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
     public Dashboard_Quiz_Admin() {
         initComponents();
+        String username = "admin1";
+        fetchDataFromDatabase(username);
     }
 
     /**
@@ -45,6 +56,12 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
         addRoleDosenLabel = new javax.swing.JLabel();
         addDosenButton = new javax.swing.JButton();
         labelTambahRole1 = new javax.swing.JLabel();
+        addMahasiswaPanel2 = new javax.swing.JPanel();
+        addRoleDosenLabel1 = new javax.swing.JLabel();
+        addDosenButton1 = new javax.swing.JButton();
+        addMahasiswaPanel3 = new javax.swing.JPanel();
+        addRoleMahasiswaLabel1 = new javax.swing.JLabel();
+        addMahasiswaButton1 = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -198,7 +215,73 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
         );
 
         labelTambahRole1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelTambahRole1.setText("Buat Pengumuman");
+        labelTambahRole1.setText("Data");
+
+        addMahasiswaPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        addRoleDosenLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        addRoleDosenLabel1.setText("Dosen");
+
+        addDosenButton1.setText(">");
+        addDosenButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDosenButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addMahasiswaPanel2Layout = new javax.swing.GroupLayout(addMahasiswaPanel2);
+        addMahasiswaPanel2.setLayout(addMahasiswaPanel2Layout);
+        addMahasiswaPanel2Layout.setHorizontalGroup(
+            addMahasiswaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMahasiswaPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addRoleDosenLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addDosenButton1)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        addMahasiswaPanel2Layout.setVerticalGroup(
+            addMahasiswaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMahasiswaPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addMahasiswaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addRoleDosenLabel1)
+                    .addComponent(addDosenButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        addMahasiswaPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        addRoleMahasiswaLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        addRoleMahasiswaLabel1.setText("Mahasiswa");
+
+        addMahasiswaButton1.setText(">");
+        addMahasiswaButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMahasiswaButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addMahasiswaPanel3Layout = new javax.swing.GroupLayout(addMahasiswaPanel3);
+        addMahasiswaPanel3.setLayout(addMahasiswaPanel3Layout);
+        addMahasiswaPanel3Layout.setHorizontalGroup(
+            addMahasiswaPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMahasiswaPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addRoleMahasiswaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addMahasiswaButton1)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        addMahasiswaPanel3Layout.setVerticalGroup(
+            addMahasiswaPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMahasiswaPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addMahasiswaPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addRoleMahasiswaLabel1)
+                    .addComponent(addMahasiswaButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
@@ -213,7 +296,11 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
                     .addGroup(jInternalFrame2Layout.createSequentialGroup()
                         .addComponent(addMahasiswaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addMahasiswaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addMahasiswaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
+                        .addComponent(addMahasiswaPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addMahasiswaPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
         jInternalFrame2Layout.setVerticalGroup(
@@ -228,7 +315,11 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
                     .addComponent(addMahasiswaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(labelTambahRole1)
-                .addGap(0, 252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addMahasiswaPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMahasiswaPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 214, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,6 +344,9 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
 
     private void addMahasiswaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMahasiswaButtonActionPerformed
         // TODO add your handling code here:
+        addMahasiswa am = new addMahasiswa();
+        am.show();
+        dispose();
     }//GEN-LAST:event_addMahasiswaButtonActionPerformed
 
     private void addDosenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDosenButtonActionPerformed
@@ -263,9 +357,48 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void addDosenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDosenButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addDosenButton1ActionPerformed
+
+    private void addMahasiswaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMahasiswaButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addMahasiswaButton1ActionPerformed
+
+    private void fetchDataFromDatabase(String username) {
+        try {
+            // Establish the database connection
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Prepare the SQL query
+            String query = "SELECT * FROM `data-admin` WHERE usernameAdmin = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, username);
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Retrieve data from the result set and populate your GUI components
+                        String adminName = resultSet.getString("namaAdmin");
+                        String nip = resultSet.getString("nipAdmin");
+                        
+
+                        // Populate the GUI components
+                        namaAdmin.setText(adminName);
+                        nipAdmin.setText(nip);
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(this, "tidak ada data tersedia");
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -305,11 +438,17 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
     private java.awt.Button LogOutButton;
     private javax.swing.JLabel WelcomeText;
     private javax.swing.JButton addDosenButton;
+    private javax.swing.JButton addDosenButton1;
     private javax.swing.JButton addMahasiswaButton;
+    private javax.swing.JButton addMahasiswaButton1;
     private javax.swing.JPanel addMahasiswaPanel;
     private javax.swing.JPanel addMahasiswaPanel1;
+    private javax.swing.JPanel addMahasiswaPanel2;
+    private javax.swing.JPanel addMahasiswaPanel3;
     private javax.swing.JLabel addRoleDosenLabel;
+    private javax.swing.JLabel addRoleDosenLabel1;
     private javax.swing.JLabel addRoleMahasiswaLabel;
+    private javax.swing.JLabel addRoleMahasiswaLabel1;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
