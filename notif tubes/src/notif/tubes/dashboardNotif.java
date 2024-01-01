@@ -1,11 +1,27 @@
 package notif.tubes;
 
-public class dashboardNotif extends javax.swing.JFrame {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+public class dashboardNotif extends javax.swing.JFrame {
+    
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/contoh_quiz";
+    static final String DB_USER = "root";
+    static final String DB_PASS = "";
+    private String listItem;
+    
+    
     public dashboardNotif() {
         initComponents();
+        jList1();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -16,53 +32,127 @@ public class dashboardNotif extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        PanelDialog = new javax.swing.JPanel();
+        BackButton = new javax.swing.JButton();
+        panelBiru = new javax.swing.JPanel();
+        DeadlineQuiz = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        aksesQuizButton = new javax.swing.JButton();
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jButton1 = new javax.swing.JButton();
+        NotifButton = new javax.swing.JButton();
 
-        jDialog1.setMinimumSize(new java.awt.Dimension(400, 300));
+        jDialog1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDialog1.setIconImage(null);
+        jDialog1.setIconImages(null);
+        jDialog1.setMaximumSize(new java.awt.Dimension(447, 221));
+        jDialog1.setMinimumSize(new java.awt.Dimension(447, 221));
+        jDialog1.setModal(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(447, 221));
+        jDialog1.setSize(new java.awt.Dimension(0, 0));
 
-        jLabel1.setText("ini isi notif");
+        PanelDialog.setBorder(new javax.swing.border.MatteBorder(null));
+        PanelDialog.setToolTipText("");
+        PanelDialog.setMinimumSize(new java.awt.Dimension(158, 221));
 
-        jButton2.setText("back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
+
+        panelBiru.setBackground(new java.awt.Color(0, 153, 255));
+        panelBiru.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 153), new java.awt.Color(0, 0, 0), null));
+
+        DeadlineQuiz.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        DeadlineQuiz.setForeground(new java.awt.Color(255, 255, 255));
+        DeadlineQuiz.setText("Deadline Quiz");
+
+        javax.swing.GroupLayout panelBiruLayout = new javax.swing.GroupLayout(panelBiru);
+        panelBiru.setLayout(panelBiruLayout);
+        panelBiruLayout.setHorizontalGroup(
+            panelBiruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBiruLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DeadlineQuiz)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelBiruLayout.setVerticalGroup(
+            panelBiruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBiruLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DeadlineQuiz)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        aksesQuizButton.setText("Kerjakan Quiz");
+        aksesQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aksesQuizButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelDialogLayout = new javax.swing.GroupLayout(PanelDialog);
+        PanelDialog.setLayout(PanelDialogLayout);
+        PanelDialogLayout.setHorizontalGroup(
+            PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelBiru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
+                        .addGap(0, 61, Short.MAX_VALUE)
+                        .addComponent(aksesQuizButton, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        PanelDialogLayout.setVerticalGroup(
+            PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDialogLayout.createSequentialGroup()
+                .addComponent(panelBiru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aksesQuizButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(100, 100, 100))
+                .addComponent(PanelDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jLabel1)
-                .addGap(57, 57, 57)
-                .addComponent(jButton2)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(PanelDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(311, 160));
 
         jInternalFrame1.setVisible(true);
 
-        jButton1.setText("Notifikasi Quiz");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        NotifButton.setText("Notifikasi Quiz");
+        NotifButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                NotifButtonActionPerformed(evt);
             }
         });
 
@@ -71,16 +161,16 @@ public class dashboardNotif extends javax.swing.JFrame {
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(NotifButton, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton1)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(NotifButton)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,22 +181,74 @@ public class dashboardNotif extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void NotifButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotifButtonActionPerformed
         // TODO add your handling code here:
         jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_NotifButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         jDialog1.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
+    private void aksesQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aksesQuizButtonActionPerformed
+        // TODO add your handling code here:
+        QuizFrame qf = new QuizFrame();
+        String selectedItem = jList1.getSelectedValue();
+        if (selectedItem != null){
+           qf.setVisible(true);        
+        }
+    }//GEN-LAST:event_aksesQuizButtonActionPerformed
+    
+    private void jList1(){
+        // Buat koneksi ke database
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
+        // Buat statement untuk mengambil data quiz
+        String sql = "SELECT nama_quiz, mata_kuliah, deadline FROM quiz";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        // Buat DefaultListModel untuk menyimpan data quiz
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        
+        while (rs.next()) {
+            String quizName = rs.getString("nama_quiz");
+            String matakuliah = rs.getString("mata_kuliah");
+            String dl = rs.getString("deadline");
+            String hasil = quizName + "  " + matakuliah + "   " + dl;
+            listModel.addElement(hasil);
+        }
+
+        jList1.setModel(listModel);
+
+        jList1.addListSelectionListener(new ListSelectionListener() {
+            private String nama_quiz;
+            QuizFrame qf = new QuizFrame();
+             @Override
+               public void valueChanged(ListSelectionEvent e) {
+                  if (!e.getValueIsAdjusting()) {
+                    String nama_quiz = jList1.getSelectedValue();
+                    if (nama_quiz != null) {
+                        QuizFrame qf = new QuizFrame(nama_quiz);
+                        qf.setVisible(true);
+            }
+        }
+    }
+        });
+
+    } catch (SQLException e) {
+        // Tampilkan pesan error jika terjadi kesalahan koneksi database
+        JOptionPane.showMessageDialog(null, "Error connecting to database: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+    }
+    };
     /**
      * @param args the command line arguments
      */
@@ -143,10 +285,15 @@ public class dashboardNotif extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JLabel DeadlineQuiz;
+    private javax.swing.JButton NotifButton;
+    private javax.swing.JPanel PanelDialog;
+    private javax.swing.JButton aksesQuizButton;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelBiru;
     // End of variables declaration//GEN-END:variables
 }
