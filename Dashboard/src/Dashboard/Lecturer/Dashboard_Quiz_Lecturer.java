@@ -7,7 +7,13 @@ package Dashboard.Lecturer;
 
 import Dashboard.Student.*;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,6 +68,9 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         editQuiz5 = new javax.swing.JButton();
         judulQuiz3 = new javax.swing.JLabel();
         QuizIcon = new javax.swing.JLabel();
+        quiz4 = new javax.swing.JPanel();
+        makeQuiz = new javax.swing.JLabel();
+        QuizIcon3 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -363,6 +372,34 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
         );
 
+        quiz4.setBackground(new java.awt.Color(255, 255, 255));
+
+        makeQuiz.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        makeQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        makeQuiz.setText("buat Quiz");
+
+        QuizIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/Add_Icon.png"))); // NOI18N
+
+        javax.swing.GroupLayout quiz4Layout = new javax.swing.GroupLayout(quiz4);
+        quiz4.setLayout(quiz4Layout);
+        quiz4Layout.setHorizontalGroup(
+            quiz4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(makeQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(QuizIcon3)
+                .addGap(25, 25, 25))
+        );
+        quiz4Layout.setVerticalGroup(
+            quiz4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz4Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(QuizIcon3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(makeQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -377,7 +414,9 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quiz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelQuizDosen)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +424,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                         .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +436,8 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quiz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(nilaiMahasiswaHeader)
                 .addGap(18, 18, 18)
@@ -421,6 +461,43 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LogOutButtonActionPerformed
+    
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/data-quiz";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
+    
+        String email = "pakdosen@gmail.com";
+    private void fetchDataFromDatabase(String email) {
+        try {
+            // Establish the database connection
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Prepare the SQL query
+            String query = "SELECT * FROM data-dosen WHERE emailDosen = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, email);
+                
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Retrieve data from the result set and populate your GUI components
+                        String dosenName = resultSet.getString("namaDosen");
+                        int nip = resultSet.getInt("nipDosen");
+                        // Populate the GUI components
+                        namaDosen.setText(dosenName);
+                        nipDosen.setText(String.valueOf(nip));
+                    } else {
+                        JOptionPane.showMessageDialog(this, "tidak ada data tersedia");
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.err.println("Error executing SQL query:");
+            e.printStackTrace();
+        }
+    }
     
     /**
      * @param args the command line arguments
@@ -469,6 +546,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private javax.swing.JLabel QuizIcon;
     private javax.swing.JLabel QuizIcon1;
     private javax.swing.JLabel QuizIcon2;
+    private javax.swing.JLabel QuizIcon3;
     private javax.swing.JLabel WelcomeText;
     private javax.swing.JButton editQuiz1;
     private javax.swing.JButton editQuiz4;
@@ -485,12 +563,14 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private javax.swing.JButton lihatNilai1;
     private javax.swing.JButton lihatNilai2;
     private javax.swing.JButton lihatNilai3;
+    private javax.swing.JLabel makeQuiz;
     private javax.swing.JLabel namaDosen;
     private javax.swing.JLabel nilaiMahasiswaHeader;
     private javax.swing.JLabel nipDosen;
     private javax.swing.JPanel quiz1;
     private javax.swing.JPanel quiz2;
     private javax.swing.JPanel quiz3;
+    private javax.swing.JPanel quiz4;
     private javax.swing.JLabel roleDosen;
     // End of variables declaration//GEN-END:variables
 }

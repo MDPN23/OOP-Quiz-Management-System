@@ -6,6 +6,12 @@
 package Dashboard.Lecturer;
 
 import Dashboard.Student.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +19,10 @@ import Dashboard.Student.*;
  */
 public class Profile_Lecturer extends javax.swing.JFrame {
 
+    
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
     /**
      * Creates new form Profile_Mahasiswa
      */
@@ -115,7 +125,7 @@ public class Profile_Lecturer extends javax.swing.JFrame {
 
         WelcomeText.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         WelcomeText.setForeground(new java.awt.Color(255, 255, 255));
-        WelcomeText.setText("Profil");
+        WelcomeText.setText("Profil Dosen");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -246,10 +256,44 @@ public class Profile_Lecturer extends javax.swing.JFrame {
     }//GEN-LAST:event_alamatDosenActionPerformed
 
     private void yaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yaButtonActionPerformed
-        // TODO add your handling code here:
-        Dashboard_Quiz_Lecturer dql = new Dashboard_Quiz_Lecturer();
-        dql.show();
-        dispose();
+        try {
+            
+            String updatedName = namaDosen.getText();
+            String updatedEmail = emailDosen.getText();
+            String updatedBirthDate = tanggalLahirDosen.getText();
+            String updatedGender = genderDosen.getText();
+            String updatedPhoneNumber = telefonDosen.getText();
+
+            
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            
+            String updateQuery = "UPDATE data-dosen SET namaDosen=?, emailDosen=?, tanggalLahirDosen=?, genderDosen=?, telefonDosen=? WHERE nipDosen=?";
+            try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                updateStatement.setString(1, updatedName);
+                updateStatement.setString(2, updatedEmail);
+                updateStatement.setString(3, updatedBirthDate);
+                updateStatement.setString(4, updatedGender);
+                updateStatement.setString(5, updatedPhoneNumber);
+                updateStatement.setInt(6, nip);
+
+                
+                int rowsUpdated = updateStatement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    JOptionPane.showMessageDialog(this, "Data updated successfully");
+                    
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to update data");
+                    ubahDataDialog.setVisible(false);
+                }
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_yaButtonActionPerformed
 
     private void tidakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tidakButtonActionPerformed
@@ -260,6 +304,45 @@ public class Profile_Lecturer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_namaDosenActionPerformed
 
+    
+    public int nip = 2020212;
+    private void fetchDataFromDatabase(int nip) {
+        try {
+            // Establish the database connection
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Prepare the SQL query
+            String query = "SELECT * FROM data-mahasiswa WHERE nipDosen = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setInt(1, nip);
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Retrieve data from the result set and populate your GUI components
+                        String studentName = resultSet.getString("namaDosen");
+                        String email = resultSet.getString("emailDosen");
+                        String birthDate = resultSet.getString("tanggalLahirDosen");
+                        String gender = resultSet.getString("genderDosen");
+                        String phoneNumber = resultSet.getString("telefonDosen");
+
+                        // Populate the GUI components
+                        namaDosen.setText(studentName);
+                        emailDosen.setText(email);
+                        tanggalLahirDosen.setText(birthDate);
+                        genderDosen.setText(gender);
+                        telefonDosen.setText(phoneNumber);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "tidak ada data tersedia");
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

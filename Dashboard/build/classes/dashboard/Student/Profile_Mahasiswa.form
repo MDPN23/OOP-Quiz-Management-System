@@ -183,7 +183,7 @@
                   <Component id="WelcomeText" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="Edit" min="-2" pref="65" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -191,9 +191,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="WelcomeText" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="Edit" min="-2" max="-2" attributes="0"/>
+                      <Component id="WelcomeText" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
@@ -201,6 +201,17 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JLabel" name="WelcomeText">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Profil Mahasiswa"/>
+          </Properties>
+        </Component>
         <Component class="java.awt.Button" name="Edit">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -217,17 +228,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="WelcomeText">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="24" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Profil"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -251,11 +251,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="namaMahasiswa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="namaMahasiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="emailMahasiswa">
       <Properties>
         <Property name="text" type="java.lang.String" value="emailMahasiswa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailMahasiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="emailLabel1">
       <Properties>
@@ -285,6 +291,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="tanggalLahirMahasiswa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tanggalLahirMahasiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="emailLabel3">
       <Properties>
@@ -298,11 +307,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="genderMahasiswa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genderMahasiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="telefonMahasiswa">
       <Properties>
         <Property name="text" type="java.lang.String" value="telefonMahasiswa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telefonMahasiswaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="emailLabel4">
       <Properties>

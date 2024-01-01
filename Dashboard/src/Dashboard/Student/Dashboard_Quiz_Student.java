@@ -5,6 +5,13 @@
  */
 package Dashboard.Student;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lenovo
@@ -14,6 +21,11 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard_Quiz
      */
+    
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/data-quiz.data-mahasiswa";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "";
+    
     public Dashboard_Quiz_Student() {
         initComponents();
     }
@@ -301,6 +313,39 @@ public class Dashboard_Quiz_Student extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_EditActionPerformed
 
+    String email = "zuokafer@gmail.com";
+    private void fetchDataFromDatabase(String email) {
+        try {
+            // Establish the database connection
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Prepare the SQL query
+            String query = "SELECT * FROM data-mahasiswa WHERE email = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, email);
+                
+
+                // Execute the query
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Retrieve data from the result set and populate your GUI components
+                        String studentName = resultSet.getString("nama");
+                        int nim = resultSet.getInt("nim");
+                        // Populate the GUI components
+                        namaMahasiswa.setText(studentName);
+                        nimMahasiswa.setText(String.valueOf(nim));
+                    } else {
+                        JOptionPane.showMessageDialog(this, "tidak ada data tersedia");
+                    }
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
