@@ -22,7 +22,7 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
      * Creates new form Profile_Mahasiswa
      */
     
-    // Define your database connection parameters
+    
     private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
