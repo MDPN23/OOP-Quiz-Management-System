@@ -204,7 +204,8 @@ public class dashboardNotif extends javax.swing.JFrame {
         QuizFrame qf = new QuizFrame();
         String selectedItem = jList1.getSelectedValue();
         if (selectedItem != null){
-           qf.setVisible(true);        
+           qf.setVisible(true);    
+           jDialog1.dispose();
         }
     }//GEN-LAST:event_aksesQuizButtonActionPerformed
     

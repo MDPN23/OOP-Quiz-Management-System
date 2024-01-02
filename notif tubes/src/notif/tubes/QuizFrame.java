@@ -2,6 +2,7 @@ package notif.tubes;
 
 public class QuizFrame extends javax.swing.JFrame {
     dashboardNotif dn = new dashboardNotif();
+    QuizFrame qf = new QuizFrame();
     public QuizFrame() {
         initComponents();
     }
@@ -128,7 +129,7 @@ public class QuizFrame extends javax.swing.JFrame {
 
     private void FinishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishButtonActionPerformed
         // TODO add your handling code here:
-        dn.setVisible(true);
+        qf.setVisible(true);
         
     }//GEN-LAST:event_FinishButtonActionPerformed
 
