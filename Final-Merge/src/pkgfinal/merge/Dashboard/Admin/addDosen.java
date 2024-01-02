@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lenovo
  */
-public class addMahasiswa extends javax.swing.JFrame {
+public class addDosen extends javax.swing.JFrame {
 
     
     private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
@@ -25,7 +25,7 @@ public class addMahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form addMahasiswa
      */
-    public addMahasiswa() {
+    public addDosen() {
         initComponents();
     }
 
@@ -42,22 +42,22 @@ public class addMahasiswa extends javax.swing.JFrame {
         WelcomeText = new javax.swing.JLabel();
         namaLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
-        nimMahasiswa = new javax.swing.JTextField();
-        emailMahasiswa = new javax.swing.JTextField();
+        nipDosen = new javax.swing.JTextField();
+        emailDosen = new javax.swing.JTextField();
         emailLabel1 = new javax.swing.JLabel();
-        alamatMahasiswa = new javax.swing.JTextField();
+        alamatDosen = new javax.swing.JTextField();
         emailLabel2 = new javax.swing.JLabel();
-        tanggalLahirMahasiswa = new javax.swing.JTextField();
+        tanggalLahirDosen = new javax.swing.JTextField();
         emailLabel3 = new javax.swing.JLabel();
-        telefonMahasiswa = new javax.swing.JTextField();
+        telefonDosen = new javax.swing.JTextField();
         emailLabel4 = new javax.swing.JLabel();
         Edit = new java.awt.Button();
-        usernameMahasiswa = new javax.swing.JTextField();
+        usernameDosen = new javax.swing.JTextField();
         namaLabel1 = new javax.swing.JLabel();
-        passwordMahasiswa = new javax.swing.JTextField();
+        passwordDosen = new javax.swing.JTextField();
         namaLabel2 = new javax.swing.JLabel();
         namaLabel3 = new javax.swing.JLabel();
-        namaMahasiswa = new javax.swing.JTextField();
+        namaDosen = new javax.swing.JTextField();
         genderLakiLaki = new javax.swing.JRadioButton();
         genderPerempuan = new javax.swing.JRadioButton();
 
@@ -69,7 +69,7 @@ public class addMahasiswa extends javax.swing.JFrame {
 
         WelcomeText.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         WelcomeText.setForeground(new java.awt.Color(255, 255, 255));
-        WelcomeText.setText("Tambah Mahasiswa");
+        WelcomeText.setText("Tambah Dosen");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -78,7 +78,7 @@ public class addMahasiswa extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(WelcomeText)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(619, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,34 +89,39 @@ public class addMahasiswa extends javax.swing.JFrame {
         );
 
         namaLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        namaLabel.setText("NIM");
+        namaLabel.setText("NIP");
 
         emailLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel.setText("Email");
 
-        nimMahasiswa.setText("nim Mahasiswa");
+        nipDosen.setText("nip Dosen");
+        nipDosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nipDosenActionPerformed(evt);
+            }
+        });
 
-        emailMahasiswa.setText("email Mahasiswa");
+        emailDosen.setText("email Dosen");
 
         emailLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel1.setText("Alamat");
 
-        alamatMahasiswa.setText("alamat Mahasiswa");
-        alamatMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+        alamatDosen.setText("alamat Dosen");
+        alamatDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alamatMahasiswaActionPerformed(evt);
+                alamatDosenActionPerformed(evt);
             }
         });
 
         emailLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel2.setText("Tanggal Lahir");
 
-        tanggalLahirMahasiswa.setText("tanggal Lahir Mahasiswa");
+        tanggalLahirDosen.setText("tanggal Lahir Dosen");
 
         emailLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel3.setText("Gender");
 
-        telefonMahasiswa.setText("telefon Mahasiswa");
+        telefonDosen.setText("telefon Dosen");
 
         emailLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         emailLabel4.setText("Telefon");
@@ -124,22 +129,22 @@ public class addMahasiswa extends javax.swing.JFrame {
         Edit.setBackground(new java.awt.Color(0, 0, 153));
         Edit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
-        Edit.setLabel("Tambah Mahasiswa");
+        Edit.setLabel("Tambah Dosen");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditActionPerformed(evt);
             }
         });
 
-        usernameMahasiswa.setText("Username Mahasiswa");
+        usernameDosen.setText("Username Dosen");
 
         namaLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         namaLabel1.setText("Username");
 
-        passwordMahasiswa.setText("Password Mahasiswa");
-        passwordMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+        passwordDosen.setText("Password Dosen");
+        passwordDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordMahasiswaActionPerformed(evt);
+                passwordDosenActionPerformed(evt);
             }
         });
 
@@ -149,7 +154,7 @@ public class addMahasiswa extends javax.swing.JFrame {
         namaLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         namaLabel3.setText("Nama");
 
-        namaMahasiswa.setText("nama Mahasiswa");
+        namaDosen.setText("nama Dosen");
 
         genderLakiLaki.setText("Laki-Laki");
 
@@ -166,15 +171,15 @@ public class addMahasiswa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(namaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(namaMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(namaDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(namaLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(passwordMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passwordDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(namaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(usernameMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(usernameDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,11 +191,11 @@ public class addMahasiswa extends javax.swing.JFrame {
                             .addComponent(emailLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailMahasiswa)
-                            .addComponent(nimMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(alamatMahasiswa)
-                            .addComponent(tanggalLahirMahasiswa)
-                            .addComponent(telefonMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailDosen)
+                            .addComponent(nipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alamatDosen)
+                            .addComponent(tanggalLahirDosen)
+                            .addComponent(telefonDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(genderLakiLaki)
                                 .addGap(18, 18, 18)
@@ -204,31 +209,31 @@ public class addMahasiswa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel1)
-                    .addComponent(usernameMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel2)
-                    .addComponent(passwordMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel3)
-                    .addComponent(namaMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(namaDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel)
-                    .addComponent(nimMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
-                    .addComponent(emailMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel1)
-                    .addComponent(alamatMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alamatDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel2)
-                    .addComponent(tanggalLahirMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tanggalLahirDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel3)
@@ -237,10 +242,10 @@ public class addMahasiswa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel4)
-                    .addComponent(telefonMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                    .addComponent(telefonDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -249,22 +254,23 @@ public class addMahasiswa extends javax.swing.JFrame {
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
         try {
-            String newUsername = usernameMahasiswa.getText();
-            String newPassword = passwordMahasiswa.getText();
-            String newName = namaMahasiswa.getText();
-            String newNIM = nimMahasiswa.getText();
-            String newEmail = emailMahasiswa.getText();
-            String newAlamat = alamatMahasiswa.getText();
-            String newBirthDate = tanggalLahirMahasiswa.getText();
+            String newUsername = usernameDosen.getText();
+            String newPassword = passwordDosen.getText();
+            String newName = namaDosen.getText();
+            String newNIM = nipDosen.getText();
+            String newEmail = emailDosen.getText();
+            String newAlamat = alamatDosen.getText();
+            String newBirthDate = tanggalLahirDosen.getText();
             String newGender = getSelectedGender();
-            String telefonString = telefonMahasiswa.getText();
+            String telefonString = telefonDosen.getText();
+            int newisLoggedIn = 0;
 
             telefonString = telefonString.replaceAll("[^0-9]", "");
 
             int newPhoneNumber = Integer.parseInt(telefonString);
 
             try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-                String insertQuery = "INSERT INTO `data-mahasiswa` (username, password, nama, nim, email, alamat, `tanggal-lahir`, gender, telefon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String insertQuery = "INSERT INTO `data-dosen` (usernameDosen, passwordDosen, namaDosen, nipDosen, emailDosen, alamatDosen, tanggalLahirDosen, genderDosen, telefon, isLoggedIn) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
                     insertStatement.setString(1, newUsername);
@@ -276,6 +282,7 @@ public class addMahasiswa extends javax.swing.JFrame {
                     insertStatement.setString(7, newBirthDate);
                     insertStatement.setString(8, newGender);
                     insertStatement.setInt(9, newPhoneNumber);
+                    insertStatement.setInt(10, newisLoggedIn);
 
                     int rowsInserted = insertStatement.executeUpdate();
 
@@ -290,19 +297,23 @@ public class addMahasiswa extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-        
+
         Dashboard_Quiz_Admin dqa = new Dashboard_Quiz_Admin();
         dqa.show();
         dispose();
     }//GEN-LAST:event_EditActionPerformed
 
-    private void alamatMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatMahasiswaActionPerformed
+    private void alamatDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatDosenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alamatMahasiswaActionPerformed
+    }//GEN-LAST:event_alamatDosenActionPerformed
 
-    private void passwordMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordMahasiswaActionPerformed
+    private void passwordDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordDosenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordMahasiswaActionPerformed
+    }//GEN-LAST:event_passwordDosenActionPerformed
+
+    private void nipDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nipDosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nipDosenActionPerformed
 
     private String getSelectedGender() {
         if (genderLakiLaki.isSelected()) {
@@ -332,21 +343,23 @@ public class addMahasiswa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addMahasiswa().setVisible(true);
+                new addDosen().setVisible(true);
             }
         });
     }
@@ -354,25 +367,25 @@ public class addMahasiswa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Edit;
     private javax.swing.JLabel WelcomeText;
-    private javax.swing.JTextField alamatMahasiswa;
+    private javax.swing.JTextField alamatDosen;
+    private javax.swing.JTextField emailDosen;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel emailLabel1;
     private javax.swing.JLabel emailLabel2;
     private javax.swing.JLabel emailLabel3;
     private javax.swing.JLabel emailLabel4;
-    private javax.swing.JTextField emailMahasiswa;
     private javax.swing.JRadioButton genderLakiLaki;
     private javax.swing.JRadioButton genderPerempuan;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JTextField namaDosen;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JLabel namaLabel1;
     private javax.swing.JLabel namaLabel2;
     private javax.swing.JLabel namaLabel3;
-    private javax.swing.JTextField namaMahasiswa;
-    private javax.swing.JTextField nimMahasiswa;
-    private javax.swing.JTextField passwordMahasiswa;
-    private javax.swing.JTextField tanggalLahirMahasiswa;
-    private javax.swing.JTextField telefonMahasiswa;
-    private javax.swing.JTextField usernameMahasiswa;
+    private javax.swing.JTextField nipDosen;
+    private javax.swing.JTextField passwordDosen;
+    private javax.swing.JTextField tanggalLahirDosen;
+    private javax.swing.JTextField telefonDosen;
+    private javax.swing.JTextField usernameDosen;
     // End of variables declaration//GEN-END:variables
 }

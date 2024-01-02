@@ -26,10 +26,10 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
-    
+    public String username = "reswa";
     public Profile_Mahasiswa() {
         initComponents();
-        String username = "gegeganteng";
+        
         fetchDataFromDatabase(username);
     }
 
@@ -279,21 +279,23 @@ public class Profile_Mahasiswa extends javax.swing.JFrame {
 
             String updatedName = namaMahasiswa.getText();
             String updatedEmail = emailMahasiswa.getText();
+            String updatedAlamat = alamatMahasiswa.getText();
             String updatedBirthDate = tanggalLahirMahasiswa.getText();
             String updatedGender = genderMahasiswa.getText();
             String updatedPhoneNumber = telefonMahasiswa.getText();
 
             Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            String updateQuery = "UPDATE `data-mahasiswa` SET nama=?, email=?, `tanggal-lahir`=?, gender=?, telefon=? WHERE username=?";
+            String updateQuery = "UPDATE `data-mahasiswa` SET nama=?, email=?, alamat=?, `tanggal-lahir`=?, gender=?, telefon=? WHERE username=?";
             try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
                 updateStatement.setString(1, updatedName);
                 updateStatement.setString(2, updatedEmail);
-                updateStatement.setString(3, updatedBirthDate);
-                updateStatement.setString(4, updatedGender);
-                updateStatement.setString(5, updatedPhoneNumber);
-                String username = "gegeganteng";
-                updateStatement.setString(6, username);
+                updateStatement.setString(3, updatedAlamat);
+                updateStatement.setString(4, updatedBirthDate);
+                updateStatement.setString(5, updatedGender);
+                updateStatement.setString(6, updatedPhoneNumber);
+                String username = this.username;
+                updateStatement.setString(7, username);
 
                 int rowsUpdated = updateStatement.executeUpdate();
 

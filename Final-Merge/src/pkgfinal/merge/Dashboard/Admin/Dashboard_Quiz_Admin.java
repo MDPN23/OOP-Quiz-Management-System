@@ -11,23 +11,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import pkgfinal.merge.login.Login;
 
 /**
  *
  * @author Lenovo
  */
 public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
-
     /**
      * Creates new form Dashboard_Quiz
      */
     private static final String DB_URL = "jdbc:mysql://localhost:3306/data-quiz";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
+ 
     public Dashboard_Quiz_Admin() {
         initComponents();
-        String username = "admin1";
-        fetchDataFromDatabase(username);
+        fetchDataFromDatabase("admin1");
     }
 
     /**
@@ -350,10 +350,16 @@ public class Dashboard_Quiz_Admin extends javax.swing.JFrame {
 
     private void addDosenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDosenButtonActionPerformed
         // TODO add your handling code here:
+        addDosen ad = new addDosen();
+        ad.show();
+        dispose();
     }//GEN-LAST:event_addDosenButtonActionPerformed
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         // TODO add your handling code here:
+        Login l = new Login();
+        l.show();
+        dispose();
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     private void addDosenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDosenButton1ActionPerformed

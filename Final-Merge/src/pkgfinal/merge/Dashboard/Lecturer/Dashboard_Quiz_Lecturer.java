@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import pkgfinal.merge.login.Login;
 
 /**
  *
@@ -50,7 +51,6 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         quiz1 = new javax.swing.JPanel();
         editQuiz1 = new javax.swing.JButton();
         judulQuiz1 = new javax.swing.JLabel();
-        QuizIcon2 = new javax.swing.JLabel();
         nilaiMahasiswaHeader = new javax.swing.JLabel();
         NilaiMahasiswa1 = new javax.swing.JPanel();
         lihatNilai1 = new javax.swing.JButton();
@@ -64,14 +64,12 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         quiz2 = new javax.swing.JPanel();
         editQuiz4 = new javax.swing.JButton();
         judulQuiz2 = new javax.swing.JLabel();
-        QuizIcon1 = new javax.swing.JLabel();
         quiz3 = new javax.swing.JPanel();
         editQuiz5 = new javax.swing.JButton();
         judulQuiz3 = new javax.swing.JLabel();
-        QuizIcon = new javax.swing.JLabel();
         quiz4 = new javax.swing.JPanel();
         makeQuiz = new javax.swing.JLabel();
-        QuizIcon3 = new javax.swing.JLabel();
+        buatQuiz = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -179,8 +177,6 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         judulQuiz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judulQuiz1.setText("judulQuiz1");
 
-        QuizIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
-
         javax.swing.GroupLayout quiz1Layout = new javax.swing.GroupLayout(quiz1);
         quiz1.setLayout(quiz1Layout);
         quiz1Layout.setHorizontalGroup(
@@ -188,20 +184,13 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
             .addComponent(judulQuiz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
-                        .addComponent(editQuiz1)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
-                        .addComponent(QuizIcon2)
-                        .addGap(25, 25, 25))))
+                .addComponent(editQuiz1)
+                .addGap(59, 59, 59))
         );
         quiz1Layout.setVerticalGroup(
             quiz1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(QuizIcon2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(judulQuiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editQuiz1)
@@ -307,28 +296,20 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         judulQuiz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judulQuiz2.setText("judulQuiz2");
 
-        QuizIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
-
         javax.swing.GroupLayout quiz2Layout = new javax.swing.GroupLayout(quiz2);
         quiz2.setLayout(quiz2Layout);
         quiz2Layout.setHorizontalGroup(
             quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(editQuiz4)
                 .addGap(59, 59, 59))
             .addComponent(judulQuiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(quiz2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(QuizIcon1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         quiz2Layout.setVerticalGroup(
             quiz2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(QuizIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(judulQuiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editQuiz4)
@@ -344,29 +325,20 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         judulQuiz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judulQuiz3.setText("judulQuiz3");
 
-        QuizIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/repostory_icon_fixed.png"))); // NOI18N
-
         javax.swing.GroupLayout quiz3Layout = new javax.swing.GroupLayout(quiz3);
         quiz3.setLayout(quiz3Layout);
         quiz3Layout.setHorizontalGroup(
             quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(judulQuiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                        .addComponent(editQuiz5)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                        .addComponent(QuizIcon)
-                        .addGap(26, 26, 26))))
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(editQuiz5)
+                .addGap(49, 49, 49))
         );
         quiz3Layout.setVerticalGroup(
             quiz3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(QuizIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(judulQuiz3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editQuiz5)
@@ -379,26 +351,32 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
         makeQuiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         makeQuiz.setText("buat Quiz");
 
-        QuizIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dashboard/Assets/Add_Icon.png"))); // NOI18N
+        buatQuiz.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        buatQuiz.setText("Buat Quiz Baru");
+        buatQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buatQuizActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout quiz4Layout = new javax.swing.GroupLayout(quiz4);
         quiz4.setLayout(quiz4Layout);
         quiz4Layout.setHorizontalGroup(
             quiz4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(makeQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addComponent(makeQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(QuizIcon3)
-                .addGap(25, 25, 25))
+                .addComponent(buatQuiz)
+                .addGap(20, 20, 20))
         );
         quiz4Layout.setVerticalGroup(
             quiz4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quiz4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(QuizIcon3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(makeQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buatQuiz)
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -408,7 +386,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nilaiMahasiswaHeader)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -417,7 +395,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(quiz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(quiz4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(labelQuizDosen)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,7 +403,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                         .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,12 +411,12 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelQuizDosen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quiz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quiz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(quiz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quiz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quiz4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quiz3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(nilaiMahasiswaHeader)
                 .addGap(18, 18, 18)
@@ -446,7 +424,7 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
                     .addComponent(NilaiMahasiswa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NilaiMahasiswa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NilaiMahasiswa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -461,7 +439,16 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         // TODO add your handling code here:
+        Login l = new Login();
+        l.show();
+        dispose();
     }//GEN-LAST:event_LogOutButtonActionPerformed
+
+    private void buatQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buatQuizActionPerformed
+        TambahQuiz tq = new TambahQuiz();
+        tq.show();
+        dispose();
+    }//GEN-LAST:event_buatQuizActionPerformed
     
     private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/data-quiz";
     private static final String DB_USER = "root";
@@ -550,11 +537,8 @@ public class Dashboard_Quiz_Lecturer extends javax.swing.JFrame {
     private javax.swing.JPanel NilaiMahasiswa1;
     private javax.swing.JPanel NilaiMahasiswa2;
     private javax.swing.JPanel NilaiMahasiswa3;
-    private javax.swing.JLabel QuizIcon;
-    private javax.swing.JLabel QuizIcon1;
-    private javax.swing.JLabel QuizIcon2;
-    private javax.swing.JLabel QuizIcon3;
     private javax.swing.JLabel WelcomeText;
+    private javax.swing.JButton buatQuiz;
     private javax.swing.JButton editQuiz1;
     private javax.swing.JButton editQuiz4;
     private javax.swing.JButton editQuiz5;

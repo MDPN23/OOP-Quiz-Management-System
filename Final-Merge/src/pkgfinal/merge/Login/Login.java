@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Pengguna;
+package pkgfinal.merge.login;
 import java.sql.*;
 import javax.swing.*;
+import pkgfinal.merge.Dashboard.Admin.*;
+import pkgfinal.merge.Dashboard.Lecturer.*;
+import pkgfinal.merge.Dashboard.Student.*;
 
-import tugas.besar.pkg2_subcatalist.*;
 
 /**
  *
@@ -18,11 +20,15 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form UI
      */
-    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/aplikasiquiz";
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/data-quiz";
     static final String DB_USER = "root";
     static final String DB_PASS = "";
     
-    Dashboard d = new Dashboard();
+    Dashboard_Quiz_Student dqs = new Dashboard_Quiz_Student();
+    Dashboard_Quiz_Lecturer dql = new Dashboard_Quiz_Lecturer();
+    Dashboard_Quiz_Admin dqa = new Dashboard_Quiz_Admin();
+    
+    
     public Login() {
         initComponents();
         jTextField1.setText("");
@@ -33,33 +39,65 @@ public class Login extends javax.swing.JFrame {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
     try {
         conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-        String query = "SELECT username, password FROM mahasiswa WHERE username=? AND password=?";
-        ps = conn.prepareStatement(query);
-
+        
+        String queryMahasiswa = "SELECT username, password FROM `data-mahasiswa` WHERE username=? AND password=?";
+        ps = conn.prepareStatement(queryMahasiswa);
         ps.setString(1, inputUsername);
         ps.setString(2, inputPassword);
-
         rs = ps.executeQuery();
 
         if (rs.next()) {
             String storedPassword = rs.getString("password");
             if (inputPassword.equals(storedPassword)) {
-                String updateQuery = "UPDATE mahasiswa SET isLoggedIn=?";
-                String value = "1";
-
-                PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
-                updateStatement.setString(1, value);
-                updateStatement.executeUpdate();
-                updateStatement.close();
+                String updateQuery = "UPDATE `data-mahasiswa` SET isLoggedIn=?";
+                try (PreparedStatement updateStatement = conn.prepareStatement(updateQuery)) {
+                    updateStatement.setString(1, "1");
+                    updateStatement.executeUpdate();
+                }
                 return true;
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+
+        String queryAdmin = "SELECT usernameAdmin, passwordAdmin FROM `data-admin` WHERE usernameAdmin=? AND passwordAdmin=?";
+        ps = conn.prepareStatement(queryAdmin);
+        ps.setString(1, inputUsername);
+        ps.setString(2, inputPassword);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String storedPassword = rs.getString("passwordAdmin");
+            if (inputPassword.equals(storedPassword)) {
+                String updateQuery = "UPDATE `data-admin` SET isLoggedIn=?";
+                try (PreparedStatement updateStatement = conn.prepareStatement(updateQuery)) {
+                    updateStatement.setString(1, "1");
+                    updateStatement.executeUpdate();
+                }
+                return true;
+            }
+        }
+
+        String queryDosen = "SELECT usernameDosen, passwordDosen FROM `data-dosen` WHERE usernameDosen=? AND passwordDosen=?";
+        ps = conn.prepareStatement(queryDosen);
+        ps.setString(1, inputUsername);
+        ps.setString(2, inputPassword);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String storedPassword = rs.getString("passwordDosen");
+            if (inputPassword.equals(storedPassword)) {
+                String updateQuery = "UPDATE `data-dosen` SET isLoggedIn=?";
+                try (PreparedStatement updateStatement = conn.prepareStatement(updateQuery)) {
+                    updateStatement.setString(1, "1");
+                    updateStatement.executeUpdate();
+                }
+                return true;
+            }
+        }
+
+        return false;
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
@@ -75,10 +113,11 @@ public class Login extends javax.swing.JFrame {
                 conn.close();
             }
         } catch (SQLException e) {
-;            e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,28 +238,38 @@ public class Login extends javax.swing.JFrame {
         try {
             if (loginController(jTextField1.getText(), jPasswordField1.getText())) {
                 conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-                String query = "SELECT nim FROM mahasiswa WHERE username=?";
-                ps = conn.prepareStatement(query);
 
+                String queryMahasiswa = "SELECT nim FROM `data-mahasiswa` WHERE username=?";
+                ps = conn.prepareStatement(queryMahasiswa);
                 ps.setString(1, jTextField1.getText());
-
                 rs = ps.executeQuery();
+
                 if (rs.next()) {
-                    String nim = rs.getString("nim");
-                    switch(nim.substring(0,3)) {
-                        case "130":
-                            System.out.println("MAHASISWA");
-                            d.setVisible(true);
-                            break;
-                        case "120":
-                            System.out.println("DOSEN");
-                            d.setVisible(true);
-                            break;
-                        case "110":
-                            System.out.println("ADMIN");
-                            d.setVisible(true);
-                            break;
-                    }
+                    rs.getString("nim");
+                    dqs.show();
+                    dispose();
+                }
+
+                String queryDosen = "SELECT nipDosen FROM `data-dosen` WHERE usernameDosen=?";
+                ps = conn.prepareStatement(queryDosen);
+                ps.setString(1, jTextField1.getText());
+                rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    rs.getString("nipDosen");
+                    dql.show();
+                    dispose();
+                }
+
+                String queryAdmin = "SELECT nipAdmin FROM `data-admin` WHERE usernameAdmin=?";
+                ps = conn.prepareStatement(queryAdmin);
+                ps.setString(1, jTextField1.getText());
+                rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    rs.getString("nipAdmin");
+                    dqa.show();
+                    dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Gagal Login!", "Error", JOptionPane.ERROR_MESSAGE);

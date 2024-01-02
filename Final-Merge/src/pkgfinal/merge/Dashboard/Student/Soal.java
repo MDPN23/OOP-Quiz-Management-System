@@ -1,3 +1,5 @@
+package pkgfinal.merge.Dashboard.Student;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -17,24 +19,28 @@ public class Soal extends javax.swing.JFrame {
     private ResultSet resultSet;
     public int nomor = 1;
     public int idSoal;
-    public int idQuiz;
+    private int idQuiz;
     Timer timer;
     int detik;
     int menit;
     
-    public Soal() { 
+    public Soal(int id) { 
         initComponents();
         connectToDatabase();
-        idQuiz = 14;
+        this.idQuiz = id;
         detik = 0;
         loadQuestion();
         cekNomor();
         hitungMundur();
     }
+
+    Soal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void hitungMundur(){
         try{
-            String query = "SELECT * FROM `quiz` WHERE id = ? ;";
+            String query = "SELECT * FROM `data-quiz` WHERE id = ? ;";
             preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setInt(1, idQuiz);
@@ -99,7 +105,7 @@ public class Soal extends javax.swing.JFrame {
     
     private void connectToDatabase() {
         try {
-            String url = "jdbc:mysql://localhost:3306/soal";
+            String url = "jdbc:mysql://localhost:3306/data-quiz";
             String username = "root";
             String password = "";
 
@@ -114,7 +120,7 @@ public class Soal extends javax.swing.JFrame {
         try {
             String nomorString = String.valueOf(nomor);
             dNomor.setText(nomorString);
-            String query = "SELECT * FROM `relasi-quiz-soal` JOIN `soal` ON `relasi-quiz-soal`.soal = `soal`.id WHERE `relasi-quiz-soal`.quiz = ? AND `relasi-quiz-soal`.nomor = ? ;";
+            String query = "SELECT * FROM `relasi-quiz-soal` JOIN `data-soal` ON `relasi-quiz-soal`.soal = `data-soal`.id WHERE `relasi-quiz-soal`.quiz = ? AND `relasi-quiz-soal`.nomor = ? ;";
             preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setInt(1, idQuiz);
@@ -452,10 +458,13 @@ public class Soal extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if(total >= 60){
+            total = total - 20;
+        }
         
         try {
             
-            String query = "UPDATE `quiz` SET skor = ? WHERE id = ?;";
+            String query = "UPDATE `data-quiz` SET skor = ? WHERE id = ?;";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, total);
             preparedStatement.setInt(2, idQuiz);
@@ -468,6 +477,10 @@ public class Soal extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        JOptionPane.showMessageDialog(null, "Quiz telah selesai");
+        Dashboard_Quiz_Student dqs = new Dashboard_Quiz_Student();
+        dqs.show();
+        dispose();
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
@@ -496,11 +509,10 @@ public class Soal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Soal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Soal().setVisible(true);
+                new Soal(1).setVisible(true);
             }
         });
     }
